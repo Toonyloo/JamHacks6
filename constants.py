@@ -10,6 +10,8 @@ class Consts:
     PLAYER_W = 30
     JUMP_STR = 15
     MAX_ARROW_SPEED = 100
+    ARROW_H = 10
+    ARROW_W = 10
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:

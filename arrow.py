@@ -28,8 +28,6 @@ class Arrow:
     def shoot(self, mouse_pos): # Takes in an angle from 0-360
         diff_x = mouse_pos[0] - (self.player.x + Consts.PLAYER_W / 2)
         diff_y = (self.player.y + Consts.PLAYER_H / 2) -  mouse_pos[1]
-        
-        print(diff_x, diff_y)
         power = math.sqrt(diff_x ** 2 + diff_y ** 2)
         if diff_x >= 0:
             angle = math.atan(diff_y / diff_x)
@@ -44,3 +42,77 @@ class Arrow:
     def draw(self, screen):
         if not self.attached:
             pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 10)
+
+    def terrain_collision_top(self, terrain): # Colliding with top of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_vel
+        right_x = left_x + Consts.ARROW_W
+        bottom_y = top_y + Consts.ARROW_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = ttop_y + terrain.height
+
+        if top_y < ttop_y < bottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
+            return True
+        return False
+    
+    def terrain_collision_bottom(self, terrain): # Colliding with bottom of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_vel
+        right_x = left_x + Consts.ARROW_W
+        bottom_y = top_y + Consts.ARROW_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = ttop_y + terrain.height
+
+        if top_y < tbottom_y < bottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
+            return True
+        return False
+    
+    def terrain_collision_left(self, terrain): # Colliding with left of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_vel
+        right_x = left_x + Consts.ARROW_W
+        bottom_y = top_y + Consts.ARROW_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = ttop_y + terrain.height
+
+        if left_x < tleft_x < right_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
+            return True
+        return False
+    
+    def terrain_collision_right(self, terrain): # Colliding with top of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_vel
+        right_x = left_x + Consts.ARROW_W
+        bottom_y = top_y + Consts.ARROW_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = ttop_y + terrain.height
+
+        if right_x > tright_x > left_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
+            return True
+        return False
+    
+
+
+    def terrain_collision(self, terrain):
+
+        if self.terrain_collision_left(terrain) or self.terrain_collision_right(terrain):
+            self.x_vel = -self.x_vel
+
+        if self.terrain_collision_top(terrain):
+            self.y_vel = 0
+            self.x_vel = 0
+
+        if self.terrain_collision_bottom(terrain):
+            self.y_vel = 0

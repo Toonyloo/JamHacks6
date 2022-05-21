@@ -53,6 +53,7 @@ while running:
     for ground in terrains:
         # print(f"{ground.tag}, Bottom: {player.terrain_collision_bottom(ground)}, Top: {player.terrain_collision_top(ground)}, Left: {player.terrain_collision_left(ground)}, Right: {player.terrain_collision_right(ground)}")
         player.terrain_collision(ground)
+        arrow.terrain_collision(ground)
         ground.draw(screen)
     player.handle_movement()
     arrow.handle_movement()
