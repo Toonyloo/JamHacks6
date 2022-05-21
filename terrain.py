@@ -1,4 +1,5 @@
 import pygame
+from constants import Consts, Images
 
 class Ground:
     def __init__(self, x, y, width, height, tag = None):
@@ -12,6 +13,13 @@ class Ground:
     def draw(self, screen):
         pygame.draw.rect(screen, (0, 0, 255), self.rect, 0)
 
-class Goal:
+class Goal(pygame.sprite.Sprite):
     def __init__(self, x, y):
-        pass
+        super(Goal, self).__init__()
+        self.x = x
+        self.y = y
+        self.image = Images.FLAG
+        self.rect = pygame.Rect(self.x, self.y - 80, 20, 80)
+    
+    def draw(self, screen):
+        screen.blit(self.image, (self.x, self.y - 80))

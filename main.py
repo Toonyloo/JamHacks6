@@ -3,7 +3,7 @@ from player import Player
 from terrain import Ground
 from arrow import Arrow
 from constants import Consts, Images
-import levels
+from levels import lvs
 
 running = True
 
@@ -25,6 +25,7 @@ clock = pygame.time.Clock()
 
 running = True
 game_state = 0
+level = 0
 
 def draw_title_screen():
     screen.fill((0, 140, 148))
@@ -53,9 +54,9 @@ while running:
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
             if mouse_buttons[0]:
                 game_state = 1
-                player = Player(levels.Lv1.spawn)
+                level = 1
+                player = Player(lvs[level].spawn)
                 arrow = Arrow(player)
-                terrains = levels.Lv1.terrain
         if 528 < mouse_pos[0] < 748 and 530 < mouse_pos[1] < 630:
             rect = pygame.Rect(535, 529, 215, 95)
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
@@ -66,12 +67,21 @@ while running:
         if keys[pygame.K_SPACE] and arrow.attached:
             arrow.shoot(mouse_pos)
         player.handle_inputs(keys, events)
-        for ground in terrains:
-            print(ground)
-            # print(f"{ground.tag}, Bottom: {player.terrain_collision_bottom(ground)}, Top: {player.terrain_collision_top(ground)}, Left: {player.terrain_collision_left(ground)}, Right: {player.terrain_collision_right(ground)}")
+        for ground in lvs[level].terrain:
             player.terrain_collision(ground)
             arrow.terrain_collision(ground)
             ground.draw(screen)
+        
+        if pygame.sprite.collide_mask(player, lvs[level].goal):
+            level += 1
+            if level == len(lvs):
+                game_state = 0
+            else:
+                player = Player(lvs[level].spawn)
+                arrow = Arrow(player)
+                continue
+        lvs[level].goal.draw(screen)
+        
         player.handle_movement()
         arrow.handle_movement()
         
