@@ -12,7 +12,8 @@ class Consts:
     MAX_ARROW_SPEED = 100
     ARROW_H = 10
     ARROW_W = 10
-    COLLISION_LOSS = 25
+    COLLISION_LOSS = 15
+    MIN_COLLISION_SPEED = 5
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:
