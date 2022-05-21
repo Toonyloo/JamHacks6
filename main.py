@@ -2,7 +2,7 @@ import pygame
 from player import Player
 from terrain import Ground
 from arrow import Arrow
-from constants import Consts
+from constants import Consts, Images
 
 running = True
 
@@ -25,8 +25,11 @@ clock = pygame.time.Clock()
 running = True
 
 def draw_title_screen():
-    screen.fill(WHITE)
-    #TODO
+    screen.fill((0, 140, 148))
+    screen.blit(Images.STARTBUTTON, (535, 400))
+    screen.blit(Images.EXITBUTTON, (528, 530))
+    screen.blit(Images.LOGO, (315, 60))
+    screen.blit(Images.BACKGROUND, (0, 0))
 
 player = Player()
 arrow = Arrow(player)
@@ -61,6 +64,7 @@ while running:
     player.draw(screen) 
     arrow.draw(screen)
     
+    draw_title_screen()
     pygame.display.flip()
 
 pygame.quit()
