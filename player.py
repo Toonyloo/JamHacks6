@@ -33,3 +33,8 @@ class Player(pygame.sprite.Sprite):
             self.y_vel = 0
         else:
             self.y_vel += Consts.GRAVITY
+    
+    def collide_floor(self, ground):
+        if self.y + Consts.PLAYER_H + self.y_vel > ground.y:
+            self.grounded = True
+            self.y = ground.y - Consts.PLAYER_H

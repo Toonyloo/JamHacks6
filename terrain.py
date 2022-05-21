@@ -11,3 +11,4 @@ class Ground(pygame.sprite.Sprite):
     
     def draw(self, screen):
         pygame.draw.rect(screen, (0, 0, 255), self.rect, 0)
+    

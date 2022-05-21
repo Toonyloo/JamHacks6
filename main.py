@@ -7,7 +7,7 @@ running = True
 
 WIDTH = 1280 # TODO
 HEIGHT = 720 # TODO
-FPS = 60 
+FPS = 60
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -39,16 +39,14 @@ while running:
             running = False
     screen.fill(WHITE)
     
-    if pygame.sprite.collide_rect(player, ground):
-        player.grounded = True
-        player.y = ground.y - Consts.PLAYER_H
-    
+
     player.handle_inputs(keys, events)
     player.handle_movement()
+    player.collide_floor(ground)
+    
     player.draw(screen)
     ground.draw(screen)
     
-    print(player.y_vel, player.grounded)
     pygame.display.flip()
 
 pygame.quit()
