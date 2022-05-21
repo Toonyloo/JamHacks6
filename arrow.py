@@ -27,6 +27,7 @@ class Arrow:
             self.y_vel += Consts.GRAVITY
     
     def attach(self):
+
         self.attached = True
     
     def shoot(self, mouse_pos): # Takes in an angle from 0-360
@@ -112,7 +113,10 @@ class Arrow:
     def terrain_collision(self, terrain):
 
         if self.terrain_collision_left(terrain) or self.terrain_collision_right(terrain):
-            self.x_vel = -(self.x_vel - min(Consts.COLLISION_LOSS, self.x_vel))
+            if self.x_vel < 0:
+                self.x_vel = -self.x_vel - min(Consts.COLLISION_LOSS, -self.x_vel)
+            else:
+                self.x_vel = -self.x_vel + min(Consts.COLLISION_LOSS, self.x_vel)
 
         if self.terrain_collision_top(terrain):
             self.y_vel = 0
