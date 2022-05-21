@@ -38,3 +38,5 @@ class Images:
     BACKGROUND = pygame.transform.scale(BACKGROUND, (1280, 720))
     FLAG = pygame.image.load('assets/images/flag.png').convert_alpha()
     FLAG = pygame.transform.scale(FLAG, (Consts.FLAG_W, Consts.FLAG_H))
+    GAME_BACKGROUND = pygame.image.load('assets/images/inGameBackground.png').convert_alpha()
+    GAME_BACKGROUND = pygame.transform.scale(GAME_BACKGROUND, (Consts.WIDTH, Consts.HEIGHT))

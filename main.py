@@ -64,6 +64,7 @@ while running:
                 pygame.quit()
                 break
     if game_state == 1:
+        screen.blit(Images.GAME_BACKGROUND, (0, 0))
         if keys[pygame.K_SPACE] and arrow.attached:
             arrow.shoot(mouse_pos)
         player.handle_inputs(keys, events)
@@ -81,6 +82,7 @@ while running:
                 arrow = Arrow(player)
                 continue
         lvs[level].goal.draw(screen)
+        
         
         player.handle_movement()
         arrow.handle_movement()
