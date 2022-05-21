@@ -7,6 +7,8 @@ class Arrow:
         self.player = p
         self.x = self.player.x
         self.y = self.player.y
+        self.xprev = 0
+        self.yprev = 0
         self.x_vel = 0
         self.y_vel = 0
         self.total_vel = 0
@@ -18,6 +20,8 @@ class Arrow:
             self.x = self.player.x 
             self.y = self.player.y
         else:
+            self.xprev = self.x
+            self.yprev = self.y
             self.x += self.x_vel
             self.y += self.y_vel
             self.y_vel += Consts.GRAVITY
@@ -54,7 +58,7 @@ class Arrow:
         ttop_y = terrain.y
         tbottom_y = ttop_y + terrain.height
 
-        if top_y < ttop_y < bottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
+        if ttop_y > self.yprev and ttop_y < bottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
             return True
         return False
     
@@ -69,7 +73,7 @@ class Arrow:
         ttop_y = terrain.y
         tbottom_y = ttop_y + terrain.height
 
-        if top_y < tbottom_y < bottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
+        if tbottom_y < self.yprev and top_y < tbottom_y and self.x + Consts.ARROW_W > tleft_x and self.x < tright_x:
             return True
         return False
     
@@ -84,7 +88,7 @@ class Arrow:
         ttop_y = terrain.y
         tbottom_y = ttop_y + terrain.height
 
-        if left_x < tleft_x < right_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
+        if tleft_x > self.xprev + Consts.ARROW_W and tleft_x < right_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
             return True
         return False
     
@@ -99,7 +103,7 @@ class Arrow:
         ttop_y = terrain.y
         tbottom_y = ttop_y + terrain.height
 
-        if right_x > tright_x > left_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
+        if tright_x < self.xprev and tright_x > left_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
             return True
         return False
     
@@ -108,7 +112,7 @@ class Arrow:
     def terrain_collision(self, terrain):
 
         if self.terrain_collision_left(terrain) or self.terrain_collision_right(terrain):
-            self.x_vel = -self.x_vel
+            self.x_vel = -(self.x_vel - min(Consts.COLLISION_LOSS, self.x_vel))
 
         if self.terrain_collision_top(terrain):
             self.y_vel = 0
