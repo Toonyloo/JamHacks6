@@ -41,7 +41,6 @@ class Arrow:
         else:
             angle = math.atan(diff_y / diff_x) + math.pi
         self.total_vel = power * 0.05
-        print(math.degrees(angle))
         self.y_vel = math.sin(angle) * self.total_vel * -1
         self.x_vel = math.cos(angle) * self.total_vel
         self.attached = False
