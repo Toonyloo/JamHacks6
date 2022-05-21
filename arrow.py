@@ -17,6 +17,8 @@ class Arrow:
 
     def handle_movement(self):
         if self.attached:
+            self.yprev = self.y
+            self.xprev = self.x
             self.x = self.player.x 
             self.y = self.player.y
         else:
@@ -38,8 +40,8 @@ class Arrow:
             angle = math.atan(diff_y / diff_x)
         else:
             angle = math.atan(diff_y / diff_x) + math.pi
-        print(power, math.degrees(angle))
         self.total_vel = power * 0.05
+        print(math.degrees(angle))
         self.y_vel = math.sin(angle) * self.total_vel * -1
         self.x_vel = math.cos(angle) * self.total_vel
         self.attached = False
