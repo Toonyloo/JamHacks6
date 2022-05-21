@@ -1,11 +1,9 @@
 import pygame
 from constants import Consts, Images
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super(Player, self).__init__()
-        self.x = 300
-        self.y = 600
+class Player:
+    def __init__(self, spawn):
+        self.x, self.y = spawn
         self.x_vel = 0
         self.y_vel = 0
         self.grounded = 0

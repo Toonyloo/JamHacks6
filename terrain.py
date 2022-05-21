@@ -1,8 +1,7 @@
 import pygame
 
-class Ground(pygame.sprite.Sprite):
+class Ground:
     def __init__(self, x, y, width, height, tag = None):
-        super(Ground, self).__init__()
         self.x = x
         self.y = y
         self.width = width
@@ -12,4 +11,7 @@ class Ground(pygame.sprite.Sprite):
     
     def draw(self, screen):
         pygame.draw.rect(screen, (0, 0, 255), self.rect, 0)
-    
+
+class Goal:
+    def __init__(self, x, y):
+        pass

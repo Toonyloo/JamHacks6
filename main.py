@@ -3,6 +3,7 @@ from player import Player
 from terrain import Ground
 from arrow import Arrow
 from constants import Consts, Images
+import levels
 
 running = True
 
@@ -52,14 +53,9 @@ while running:
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
             if mouse_buttons[0]:
                 game_state = 1
-                player = Player()
+                player = Player(levels.Lv1.spawn)
                 arrow = Arrow(player)
-                terrains = []
-                terrains.append(Ground(0, 700, 1280, 20, "floor"))
-                terrains.append(Ground(0, 0, 20, 720, "left wall"))
-                terrains.append(Ground(1260, 0, 20, 720, "right wall"))
-                terrains.append(Ground(400, 600, 200, 20, "platform"))
-                terrains.append(Ground(300, 400, 200, 20, "platform"))
+                terrains = levels.Lv1.terrain
         if 528 < mouse_pos[0] < 748 and 530 < mouse_pos[1] < 630:
             rect = pygame.Rect(535, 529, 215, 95)
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
@@ -71,6 +67,7 @@ while running:
             arrow.shoot(mouse_pos)
         player.handle_inputs(keys, events)
         for ground in terrains:
+            print(ground)
             # print(f"{ground.tag}, Bottom: {player.terrain_collision_bottom(ground)}, Top: {player.terrain_collision_top(ground)}, Left: {player.terrain_collision_left(ground)}, Right: {player.terrain_collision_right(ground)}")
             player.terrain_collision(ground)
             arrow.terrain_collision(ground)
