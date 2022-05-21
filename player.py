@@ -4,8 +4,8 @@ from constants import Consts, Images
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super(Player, self).__init__()
-        self.x = 0
-        self.y = Consts.HEIGHT - Consts.PLAYER_H 
+        self.x = 300
+        self.y = Consts.HEIGHT - Consts.PLAYER_H
         self.x_vel = 0
         self.y_vel = 0
         self.grounded = True
@@ -34,7 +34,27 @@ class Player(pygame.sprite.Sprite):
         else:
             self.y_vel += Consts.GRAVITY
     
-    def collide_floor(self, ground):
-        if self.y + Consts.PLAYER_H + self.y_vel > ground.y:
+    def terrain_collision(self, terrain):
+        x = self.x + self.x_vel
+        y = self.y + self.y_vel
+        
+        # TODO HELP ME JEFFERY
+        # FIX THIS SHIT
+        x_between = terrain.x - Consts.PLAYER_W < x < terrain.x + terrain.width
+        y_between = terrain.y - Consts.PLAYER_H < y < terrain.y + terrain.height
+        # Colllision with floor
+        if y + Consts.PLAYER_H > terrain.y and x_between:
             self.grounded = True
-            self.y = ground.y - Consts.PLAYER_H
+            self.y = terrain.y - Consts.PLAYER_H
+
+        # Collision with right side of wall
+        if x_between and y_between:
+            self.x_vel = 0
+
+        # # Colliion with left side of wall
+        # if x + Consts.PLAYER_W > terrain.x and y_between:
+        #     self.x_vel = 0
+        
+        # Collsion with ceiling
+        if y < terrain.y + terrain.height and x_between:
+            self.y_vel = 0

@@ -28,7 +28,10 @@ def draw_title_screen():
     #TODO
 
 player = Player()
-ground = Ground(0, 700, 1280, 20)
+terrains = []
+terrains.append(Ground(0, 700, 1280, 20))
+terrains.append(Ground(0, 0, 20, 720))
+terrains.append(Ground(1260, 0, 20, 720))
 while running:
     clock.tick(FPS) 
     events = pygame.event.get()
@@ -41,11 +44,11 @@ while running:
     
 
     player.handle_inputs(keys, events)
+    for ground in terrains:
+        player.terrain_collision(ground)
+        ground.draw(screen)
     player.handle_movement()
-    player.collide_floor(ground)
-    
-    player.draw(screen)
-    ground.draw(screen)
+    player.draw(screen)    
     
     pygame.display.flip()
 
