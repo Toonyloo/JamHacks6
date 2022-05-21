@@ -65,7 +65,7 @@ while running:
                 break
     if game_state == 1:
         screen.blit(Images.GAME_BACKGROUND, (0, 0))
-        if keys[pygame.K_SPACE] and arrow.attached:
+        if mouse_buttons[0] and arrow.attached:
             arrow.shoot(mouse_pos)
         player.handle_inputs(keys, events)
         for ground in lvs[level].terrain:
