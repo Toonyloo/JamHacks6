@@ -108,9 +108,7 @@ class Arrow:
 
         if tright_x < self.xprev and tright_x > left_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
             return True
-        return False
-    
-
+        return False    
 
     def terrain_collision(self, terrain):
 

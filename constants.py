@@ -19,15 +19,22 @@ class Consts:
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:
-    PLAYER = pygame.image.load("assets/images/placeholder.png").convert_alpha()
-    PLAYER = pygame.transform.scale(PLAYER, (Consts.PLAYER_W, Consts.PLAYER_H))
-    STARTBUTTON = pygame.image.load('assets/images/start.png')
+    PLAYER_RIGHT = []
+    PLAYER_LEFT = []
+    for i in range(4):
+        right = pygame.image.load(f'assets/images/player/right{i}.png').convert_alpha()
+        left = pygame.image.load(f'assets/images/player/left{i}.png').convert_alpha()
+        right = pygame.transform.scale(right, (Consts.PLAYER_W, Consts.PLAYER_H))
+        left = pygame.transform.scale(left, (Consts.PLAYER_W, Consts.PLAYER_H))
+        PLAYER_RIGHT.append(right)
+        PLAYER_LEFT.append(left)
+    STARTBUTTON = pygame.image.load('assets/images/start.png').convert_alpha()
     STARTBUTTON = pygame.transform.scale(STARTBUTTON, (210, 100))
-    EXITBUTTON = pygame.image.load('assets/images/exit.png')
+    EXITBUTTON = pygame.image.load('assets/images/exit.png').convert_alpha()
     EXITBUTTON = pygame.transform.scale(EXITBUTTON, (220, 100))
-    LOGO = pygame.image.load('assets/images/title.png')
+    LOGO = pygame.image.load('assets/images/title.png').convert_alpha()
     LOGO = pygame.transform.scale(LOGO, (650, 210))
-    BACKGROUND = pygame.image.load('assets/images/background.png')
+    BACKGROUND = pygame.image.load('assets/images/background.png').convert_alpha()
     BACKGROUND = pygame.transform.scale(BACKGROUND, (1280, 720))
-    FLAG = pygame.image.load('assets/images/flag.png')
+    FLAG = pygame.image.load('assets/images/flag.png').convert_alpha()
     FLAG = pygame.transform.scale(FLAG, (Consts.FLAG_W, Consts.FLAG_H))
