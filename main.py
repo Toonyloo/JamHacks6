@@ -77,6 +77,7 @@ while running:
             ground.draw(screen)
         player.handle_movement()
         arrow.handle_movement()
+        arrow.attach()
         
         player.draw(screen) 
         arrow.draw(screen)
