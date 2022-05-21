@@ -10,8 +10,10 @@ class Consts:
     PLAYER_W = 30
     JUMP_STR = 15
     MAX_ARROW_SPEED = 100
-    ARROW_H = 10
-    ARROW_W = 10
+    ARROW_H = 15
+    ARROW_W = 15
+    ARROW_SPRITE_W = 150
+    ARROW_SPRITE_H = 20
     COLLISION_LOSS = 15
     MIN_COLLISION_SPEED = 5
     FLAG_W = 60
@@ -38,3 +40,5 @@ class Images:
     BACKGROUND = pygame.transform.scale(BACKGROUND, (1280, 720))
     FLAG = pygame.image.load('assets/images/flag.png').convert_alpha()
     FLAG = pygame.transform.scale(FLAG, (Consts.FLAG_W, Consts.FLAG_H))
+    ARROW = pygame.image.load('assets/images/arrow.png').convert_alpha()
+    ARROW = pygame.transform.scale(ARROW, (Consts.ARROW_SPRITE_W, Consts.ARROW_SPRITE_H))

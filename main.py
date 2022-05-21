@@ -88,7 +88,7 @@ while running:
 
         for event in events:
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LSHIFT:
+                if event.key == pygame.K_LSHIFT and not arrow.attached:
                     arrow.swap()
         
         player.draw(screen) 

@@ -7,6 +7,8 @@ Ground(0, 0, 20, 720, "left wall"),
 Ground(1260, 0, 20, 720, "right wall"),
 Ground(400, 600, 200, 20, "platform"),
 Ground(300, 400, 200, 20, "platform")]
+    spawn = (50, 50)
+    goal = Goal(700, 700)
 
 class Lv1:
     terrain = [Ground(0, 590, 320, 130),
