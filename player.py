@@ -8,6 +8,7 @@ class Player(pygame.sprite.Sprite):
         self.y = 600
         self.x_vel = 0
         self.y_vel = 0
+        self.grounded = 0
         self.image = Images.PLAYER
         self.rect = pygame.Rect(self.x, self.y, Consts.PLAYER_W, Consts.PLAYER_H)
     
@@ -23,12 +24,16 @@ class Player(pygame.sprite.Sprite):
             self.x_vel += Consts.PLAYERSPEED
         for event in events:
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
+                if event.key == pygame.K_w and self.grounded > 1:
                     self.y_vel = -Consts.JUMP_STR
 
     def handle_movement(self):
         self.x += self.x_vel
         self.y += self.y_vel
+        if self.y_vel != 0:
+            self.grounded = 0
+        else:
+            self.grounded += 1
         self.y_vel += Consts.GRAVITY
     
     def terrain_collision_top(self, terrain): # Colliding with top of terrain

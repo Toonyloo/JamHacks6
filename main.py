@@ -47,10 +47,9 @@ while running:
 
     player.handle_inputs(keys, events)
     for ground in terrains:
-        print(f"{ground.tag}, Bottom: {player.terrain_collision_bottom(ground)}, Top: {player.terrain_collision_top(ground)}, Left: {player.terrain_collision_left(ground)}, Right: {player.terrain_collision_right(ground)}")
+        # print(f"{ground.tag}, Bottom: {player.terrain_collision_bottom(ground)}, Top: {player.terrain_collision_top(ground)}, Left: {player.terrain_collision_left(ground)}, Right: {player.terrain_collision_right(ground)}")
         player.terrain_collision(ground)
         ground.draw(screen)
-    print(player.x_vel, player.y_vel)
     player.handle_movement()
     player.draw(screen)    
     
