@@ -124,3 +124,10 @@ class Arrow:
 
         if self.terrain_collision_bottom(terrain):
             self.y_vel = 0
+
+    def swap(self):
+        self.x, self.player.x = self.player.x, self.x
+        self.y , self.player.y = self.player.y, self.y - (Consts.PLAYER_H - Consts.ARROW_H)
+        self.xprev = self.x
+        self.yprev = self.y
+        
