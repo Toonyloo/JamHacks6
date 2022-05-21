@@ -14,6 +14,8 @@ class Arrow:
         self.total_vel = 0
         self.grounded = True
         self.attached = True
+        self.angle = 0
+        self.image = Images.ARROW
 
     def handle_movement(self):
         if self.attached:
@@ -46,8 +48,13 @@ class Arrow:
         self.attached = False
     
     def draw(self, screen):
+        if self.x_vel != 0:
+            self.angle = math.degrees(math.atan(self.y_vel / -self.x_vel))
+        if self.x_vel < 0:
+            self.angle += 180
+        img_rect = pygame.transform.rotate(self.image, self.angle).get_rect(center=((self.x, self.y)))
         if not self.attached:
-            pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 10)
+            screen.blit(pygame.transform.rotate(self.image, self.angle), img_rect)
 
     def terrain_collision_top(self, terrain): # Colliding with top of terrain
         left_x = self.x + self.x_vel
@@ -123,3 +130,10 @@ class Arrow:
 
         if self.terrain_collision_bottom(terrain):
             self.y_vel = 0
+
+    def swap(self):
+        self.x, self.player.x = self.player.x, self.x
+        self.y , self.player.y = self.player.y, self.y - (Consts.PLAYER_H - Consts.ARROW_H)
+        self.xprev = self.x
+        self.yprev = self.y
+        
