@@ -34,6 +34,68 @@ class Player(pygame.sprite.Sprite):
         else:
             self.y_vel += Consts.GRAVITY
     
+    def terrain_collision_top(self, terrain): # Colliding with top of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_val
+        right_x = left_x + Consts.PLAYER_W
+        bottom_y = top_y + Consts.PLAYER_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = tbottom_y + terrain.height
+
+        if ttop_y > bottom_y and right_x > tleft_x and left_x < tright_x:
+            return True
+        return False
+    
+    def terrain_collision_bottom(self, terrain): # Colliding with bottom of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_val
+        right_x = left_x + Consts.PLAYER_W
+        bottom_y = top_y + Consts.PLAYER_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = tbottom_y + terrain.height
+
+        if tbottom_y < top_y and right_x > tleft_x and left_x < tright_x:
+            return True
+        return False
+    
+    def terrain_collision_left(self, terrain): # Colliding with left of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_val
+        right_x = left_x + Consts.PLAYER_W
+        bottom_y = top_y + Consts.PLAYER_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = tbottom_y + terrain.height
+
+        if tleft_x < right_x and top_y > tbottom_y and bottom_y < ttop_y:
+            return True
+        return False
+    
+    def terrain_collision_right(self, terrain): # Colliding with top of terrain
+        left_x = self.x + self.x_vel
+        top_y = self.y + self.y_val
+        right_x = left_x + Consts.PLAYER_W
+        bottom_y = top_y + Consts.PLAYER_H
+
+        tleft_x = terrain.x
+        tright_x = tleft_x + terrain.width
+        ttop_y = terrain.y
+        tbottom_y = tbottom_y + terrain.height
+
+        if tright_x > left_x and top_y > tbottom_y and bottom_y < ttop_y:
+            return True
+        return False
+    
+
+
     def terrain_collision(self, terrain):
         x = self.x + self.x_vel
         y = self.y + self.y_vel
