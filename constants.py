@@ -5,10 +5,10 @@ class Consts:
     HEIGHT = 720
     WIDTH = 1280
     PLAYERSPEED = 5
-    GRAVITY = 1
+    GRAVITY = 0.8
     PLAYER_H = 60
     PLAYER_W = 30
-    JUMP_STR = 20
+    JUMP_STR = 15
     MAX_ARROW_SPEED = 100
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
