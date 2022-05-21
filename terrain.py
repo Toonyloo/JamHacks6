@@ -19,7 +19,7 @@ class Goal(pygame.sprite.Sprite):
         self.x = x
         self.y = y
         self.image = Images.FLAG
-        self.rect = pygame.Rect(self.x, self.y - 80, 20, 80)
+        self.rect = pygame.Rect(self.x, self.y - Consts.FLAG_H, Consts.FLAG_W, Consts.FLAG_H)
     
     def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y - 80))
+        screen.blit(self.image, (self.x, self.y - Consts.FLAG_H))

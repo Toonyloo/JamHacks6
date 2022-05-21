@@ -14,6 +14,8 @@ class Consts:
     ARROW_W = 10
     COLLISION_LOSS = 15
     MIN_COLLISION_SPEED = 5
+    FLAG_W = 60
+    FLAG_H = 140
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:
@@ -28,4 +30,4 @@ class Images:
     BACKGROUND = pygame.image.load('assets/images/background.png')
     BACKGROUND = pygame.transform.scale(BACKGROUND, (1280, 720))
     FLAG = pygame.image.load('assets/images/flag.png')
-    FLAG = pygame.transform.scale(FLAG, (20, 80))
+    FLAG = pygame.transform.scale(FLAG, (Consts.FLAG_W, Consts.FLAG_H))
