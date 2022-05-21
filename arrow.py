@@ -38,7 +38,6 @@ class Arrow:
             angle = math.atan(diff_y / diff_x)
         else:
             angle = math.atan(diff_y / diff_x) + math.pi
-        print(power, math.degrees(angle))
         self.total_vel = power * 0.05
         self.y_vel = math.sin(angle) * self.total_vel * -1
         self.x_vel = math.cos(angle) * self.total_vel
@@ -106,9 +105,7 @@ class Arrow:
 
         if tright_x < self.xprev and tright_x > left_x and self.y < tbottom_y and self.y + Consts.ARROW_H > ttop_y:
             return True
-        return False
-    
-
+        return False    
 
     def terrain_collision(self, terrain):
 
