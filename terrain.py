@@ -1,12 +1,13 @@
 import pygame
 
 class Ground(pygame.sprite.Sprite):
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, tag = None):
         super(Ground, self).__init__()
         self.x = x
         self.y = y
         self.width = width
         self.height = height
+        self.tag = tag
         self.rect = pygame.Rect(x, y, width, height)
     
     def draw(self, screen):
