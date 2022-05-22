@@ -49,6 +49,8 @@ class Images:
     ARROW = pygame.transform.scale(ARROW, (Consts.ARROW_SPRITE_W, Consts.ARROW_SPRITE_H))
     FLOOR = pygame.image.load('assets/images/floorTexture.png').convert_alpha()
     FLOOR = pygame.transform.scale(FLOOR, (Consts.WIDTH, Consts.HEIGHT))
+    INTRO_TRANSITION = pygame.image.load('assets/images/introTransition.png').convert_alpha()
+    INTRO_TRANSITION = pygame.transform.scale(INTRO_TRANSITION, (Consts.WIDTH, Consts.HEIGHT))
     DOOR = pygame.image.load('assets/images/door.png').convert_alpha()
 
 class Sfx:
@@ -57,3 +59,6 @@ class Sfx:
     BUTTON = pygame.mixer.Sound("assets/sounds/button.mp3")
     VICTORY = pygame.mixer.Sound("assets/sounds/victory.mp3")
     TELEPORT = pygame.mixer.Sound("assets/sounds/teleport.mp3")
+
+class Fonts:
+    TXT_FONT = pygame.font.Font("assets/fonts/macondo.ttf", 32)

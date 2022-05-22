@@ -46,7 +46,7 @@ class Player(pygame.sprite.Sprite):
             self.x_vel += Consts.PLAYERSPEED
         for event in events:
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w and self.grounded > 1:
+                if (event.key == pygame.K_w or event.key == pygame.K_SPACE) and self.grounded > 1:
                     self.y_vel = -Consts.JUMP_STR
 
     def handle_movement(self):
@@ -117,7 +117,6 @@ class Player(pygame.sprite.Sprite):
         if right_x > tright_x > left_x and self.y < tbottom_y and self.y + Consts.PLAYER_H > ttop_y:
             return True
         return False
-    
 
 
     def terrain_collision(self, terrain):

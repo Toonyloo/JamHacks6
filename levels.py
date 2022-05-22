@@ -1,5 +1,6 @@
 import pygame
 from terrain import Ground, Goal, Button, Door
+from constants import Fonts, Consts
 
 class Test:
     terrain = [Ground(0, 700, 1280, 20, "floor"),
@@ -26,6 +27,14 @@ class Lv1:
     doors = []
     buttons = []
     
+    def draw_text(screen):
+        txt = Fonts.TXT_FONT.render("Use A/D to move", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 80))
+        screen.blit(txt, txt_rect)
+        txt = Fonts.TXT_FONT.render("Press SPACE to jump", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 140))
+        screen.blit(txt, txt_rect)
+
 class Lv2:
     terrain = [Ground(0, 700, 1280, 20, "floor"),
                Ground(0, 0, 20, 720, "left wall"),
@@ -37,6 +46,17 @@ class Lv2:
     goal = Goal(1120, 700)
     doors = [Door(400, 580, 20, 120)]
     buttons = [Button(20, 120, True, False, doors[0])]
+    
+    def draw_text(screen):
+        txt = Fonts.TXT_FONT.render("LEFT CLICK to shoot the arrow", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 5 * 3, 80))
+        screen.blit(txt, txt_rect)
+        txt = Fonts.TXT_FONT.render("SHIFT to swap spaces with the arrow", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 5 * 3, 130))
+        screen.blit(txt, txt_rect)
+        txt = Fonts.TXT_FONT.render("Walk to the accursed arrow to pick it up", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH /5 * 3, 180))
+        screen.blit(txt, txt_rect)
 
 class Lv3:
     terrain = [Ground(0, 0, 20, 720, "left wall"),
