@@ -18,6 +18,9 @@ class Consts:
     MIN_COLLISION_SPEED = 5
     FLAG_W = 60
     FLAG_H = 140
+    BUTTON_L = 150
+    BUTTON_W = 50
+    BUTTON_W_PRESSED = 20
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:
