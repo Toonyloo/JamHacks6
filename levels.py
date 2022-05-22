@@ -35,7 +35,7 @@ class Lv2:
                Ground(800, 300, 20, 420)]
     spawn = (20, 500)
     goal = Goal(1120, 700)
-    doors = [Door(400, 600, 20, 120)]
+    doors = [Door(400, 580, 20, 120)]
     buttons = [Button(20, 120, True, doors[0])]
 
 class Lv3:
