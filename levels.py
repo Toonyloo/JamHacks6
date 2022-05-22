@@ -3,11 +3,11 @@ from terrain import Ground, Goal, Button, Door
 
 class Test:
     terrain = [Ground(0, 700, 1280, 20, "floor"),
-Ground(0, 0, 20, 720, "left wall"),
-Ground(1260, 0, 20, 720, "right wall"),
-Ground(400, 600, 200, 20, "platform"),
-Ground(300, 400, 200, 20, "platform"),
-Ground(0, 0, 1280, 20, "ceiling")]
+               Ground(0, 0, 20, 720, "left wall"),
+               Ground(1260, 0, 20, 720, "right wall"),
+               Ground(400, 600, 200, 20, "platform"),
+               Ground(300, 400, 200, 20, "platform"),
+               Ground(0, 0, 1280, 20, "ceiling")]
     spawn = (50, 50)
     goal = Goal(700, 700)
     doors = []
@@ -25,28 +25,29 @@ class Lv1:
     goal = Goal(1120, 200)
     doors = []
     buttons = []
-
+    
 class Lv2:
     terrain = [Ground(0, 700, 1280, 20, "floor"),
-Ground(0, 0, 20, 720, "left wall"),
-Ground(1260, 0, 20, 720, "right wall"),
-Ground(0, 0, 1280, 20, "ceiling"),
-Ground(400, 600, 200, 20, "platform"),
-Ground(300, 400, 200, 20, "platform")]
+               Ground(0, 0, 20, 720, "left wall"),
+               Ground(1260, 0, 20, 720, "right wall"),
+               Ground(0, 0, 1280, 20, "ceiling"),
+               Ground(400, 0, 20, 600),
+               Ground(800, 300, 20, 420)]
+    spawn = (20, 500)
+    goal = Goal(1120, 700)
+    doors = [Door(400, 600, 20, 120)]
+    buttons = [Button(20, 120, True, doors[0])]
+
+class Lv3:
+    terrain = [Ground(0, 700, 1280, 20, "floor"),
+               Ground(0, 0, 20, 720, "left wall"),
+               Ground(1260, 0, 20, 720, "right wall"),
+               Ground(0, 0, 1280, 20, "ceiling"),
+               Ground(400, 600, 200, 20, "platform"),
+               Ground(300, 400, 200, 20, "platform")]
     spawn = (20, 500)
     goal = Goal(1120, 200)
     doors = []
     buttons = []
-
-class Lv3:
-    terrain = [Ground(0, 700, 1280, 20, "floor"),
-Ground(0, 0, 20, 720, "left wall"),
-Ground(1260, 0, 20, 720, "right wall"),
-Ground(0, 0, 1280, 20, "ceiling"),
-Ground(600, 0, 20, 600)]
-    spawn = (20, 500)
-    goal = Goal(1120, 700)
-    doors = [Door(600, 600, 20, 120)]
-    buttons = [Button(20, 120, True, doors[0])]
 
 lvs = [Test, Lv1, Lv2, Lv3]
