@@ -94,8 +94,7 @@ while running:
             else:
                 player = Player(lvl.spawn)
                 arrow = Arrow(player)
-            lvl = lvs[level_num]()
-        
+                lvl = lvs[level_num]()
         player.handle_movement()
         arrow.handle_movement()
         arrow.attach()
@@ -118,7 +117,7 @@ while running:
         arrow.draw(screen)
 
     elif game_state == 2:
-        pass
+        screen.blit(Images.END_SCREEN, (0, 0))
     elif game_state == 3:
         screen.blit(Images.INTRO_TRANSITION, (0, 0))
         if keys[pygame.K_SPACE]:
