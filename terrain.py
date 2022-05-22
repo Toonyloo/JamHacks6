@@ -62,3 +62,7 @@ class Button(pygame.sprite.Sprite):
     
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
+        if self.vertical:
+            pygame.draw.rect(screen, (0), pygame.Rect(self.x, self.y - 10, Consts.BUTTON_W - 35, Consts.BUTTON_L + 20))
+        else:
+            pygame.draw.rect(screen, (0), pygame.Rect(self.x - 10, self.y, Consts.BUTTON_L + 20, Consts.BUTTON_W - 35))
