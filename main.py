@@ -81,7 +81,17 @@ while running:
                 player = Player(lvs[level].spawn)
                 arrow = Arrow(player)
                 continue
+        for button in lvs[level].buttons:
+            if pygame.sprite.collide_rect(arrow, button) or pygame.sprite.collide_rect(player, button):
+                button.press()
+            button.draw(screen)
         lvs[level].goal.draw(screen)
+
+        for door in lvs[level].doors:
+            if door.closed:
+                player.terrain_collision(door)
+                arrow.terrain_collision(door)
+                door.draw(screen)
         
         
         player.handle_movement()

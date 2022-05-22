@@ -16,6 +16,7 @@ class Arrow:
         self.attached = True
         self.angle = 0
         self.image = Images.ARROW
+        self.rect = pygame.Rect(self.x, self.y, Consts.ARROW_W, Consts.ARROW_H)
 
     def handle_movement(self):
         if self.attached:
@@ -23,12 +24,14 @@ class Arrow:
             self.xprev = self.x
             self.x = self.player.x 
             self.y = self.player.y
+            self.rect = pygame.Rect(self.x, self.y, Consts.ARROW_W, Consts.ARROW_H)
         else:
             self.xprev = self.x
             self.yprev = self.y
             self.x += self.x_vel
             self.y += self.y_vel
             self.y_vel += Consts.GRAVITY
+            self.rect = pygame.Rect(self.x, self.y, Consts.ARROW_W, Consts.ARROW_H)
     
     def attach(self):
         if self.player.x + Consts.PLAYER_W >= self.x and self.player.x <= self.x + Consts.ARROW_W and self.player.y <= self.y + Consts.ARROW_H and self.player.y + Consts.PLAYER_H >= self.y:
