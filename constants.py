@@ -49,6 +49,8 @@ class Images:
     ARROW = pygame.transform.scale(ARROW, (Consts.ARROW_SPRITE_W, Consts.ARROW_SPRITE_H))
     FLOOR = pygame.image.load('assets/images/floorTexture.png').convert_alpha()
     FLOOR = pygame.transform.scale(FLOOR, (Consts.WIDTH, Consts.HEIGHT))
+    INTRO_TRANSITION = pygame.image.load('assets/images/introTransition.png').convert_alpha()
+    INTRO_TRANSITION = pygame.transform.scale(INTRO_TRANSITION, (Consts.WIDTH, Consts.HEIGHT))
     DOOR = pygame.image.load('assets/images/door.png').convert_alpha()
 
 class Sfx:

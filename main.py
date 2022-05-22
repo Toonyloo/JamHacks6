@@ -109,6 +109,7 @@ while running:
     elif game_state == 2:
         pass
     elif game_state == 3:
+        screen.blit(Images.INTRO_TRANSITION, (0, 0))
         if keys[pygame.K_SPACE]:
             game_state = 1
             level = 1
