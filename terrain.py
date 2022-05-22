@@ -9,9 +9,11 @@ class Ground:
         self.height = height
         self.tag = tag
         self.rect = pygame.Rect(x, y, width, height)
+        self.surf = pygame.Surface((self.width, self.height))
+        self.surf.blit(Images.FLOOR, (0, 0))
     
     def draw(self, screen):
-        pygame.draw.rect(screen, (0, 0, 255), self.rect, 0)
+        screen.blit(self.surf, (self.x, self.y))
 
 class Goal(pygame.sprite.Sprite):
     def __init__(self, x, y):
