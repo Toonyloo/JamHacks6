@@ -2,7 +2,7 @@ import pygame
 from player import Player
 from terrain import Ground
 from arrow import Arrow
-from constants import Consts, Images, Sfx
+from constants import Consts, Images, Sfx, Fonts
 from levels import lvs
 
 running = True
@@ -20,7 +20,7 @@ BLUE = (0, 0, 255)
 pygame.init()
 pygame.mixer.init() 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Game')  # TODO
+pygame.display.set_caption('The Accursed Arrow') 
 clock = pygame.time.Clock()  
 
 running = True
@@ -53,17 +53,15 @@ while running:
             rect = pygame.Rect(535, 400, 210, 94)
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
             if mouse_buttons[0]:
-                game_state = 1
-                level = 1
-                player = Player(lvs[level].spawn)
-                arrow = Arrow(player)
+                game_state = 3
         if 528 < mouse_pos[0] < 748 and 530 < mouse_pos[1] < 630:
             rect = pygame.Rect(535, 529, 215, 95)
             pygame.draw.rect(screen, (128, 128, 128), rect, 5)
             if mouse_buttons[0]:
                 pygame.quit()
                 break
-    if game_state == 1:
+
+    elif game_state == 1:
         screen.blit(Images.GAME_BACKGROUND, (0, 0))
         if mouse_buttons[0] and arrow.attached:
             arrow.shoot(mouse_pos)
@@ -85,6 +83,9 @@ while running:
                 arrow.terrain_collision(door)
                 door.draw(screen)
         
+        lvs[level].draw_text(screen)
+
+        
         if pygame.sprite.collide_mask(player, lvs[level].goal):
             Sfx.VICTORY.play()
             level += 1
@@ -105,7 +106,14 @@ while running:
         
         player.draw(screen) 
         arrow.draw(screen)
-        
+    elif game_state == 2:
+        pass
+    elif game_state == 3:
+        if keys[pygame.K_SPACE]:
+            game_state = 1
+            level = 1
+            player = Player(lvs[level].spawn)
+            arrow = Arrow(player)
     pygame.display.flip()
 
 pygame.quit()

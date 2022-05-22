@@ -56,3 +56,6 @@ class Sfx:
     BUTTON = pygame.mixer.Sound("assets/sounds/button.mp3")
     VICTORY = pygame.mixer.Sound("assets/sounds/victory.mp3")
     TELEPORT = pygame.mixer.Sound("assets/sounds/teleport.mp3")
+
+class Fonts:
+    TXT_FONT = pygame.font.Font("assets/fonts/macondo.ttf", 32)
