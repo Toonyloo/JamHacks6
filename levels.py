@@ -37,7 +37,10 @@ class Lv1:
         txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 80))
         screen.blit(txt, txt_rect)
         txt = Fonts.TXT_FONT.render("Press SPACE to jump", True, (0, 140, 148))
-        txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 140))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 130))
+        screen.blit(txt, txt_rect)
+        txt = Fonts.TXT_FONT.render("Press R to restart", True, (0, 140, 148))
+        txt_rect = txt.get_rect(center=(Consts.WIDTH / 2, 180))
         screen.blit(txt, txt_rect)
 
 class Lv2:
