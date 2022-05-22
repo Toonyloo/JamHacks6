@@ -25,7 +25,7 @@ clock = pygame.time.Clock()
 
 running = True
 game_state = 0
-level = 0
+level_num = 0
 
 def draw_title_screen():
     screen.fill((0, 140, 148))
@@ -66,34 +66,35 @@ while running:
         if mouse_buttons[0] and arrow.attached:
             arrow.shoot(mouse_pos)
         player.handle_inputs(keys, events)
-        for ground in lvs[level].terrain:
+        for ground in lvl.terrain:
             player.terrain_collision(ground)
             arrow.terrain_collision(ground)
             ground.draw(screen)
         
-        for button in lvs[level].buttons:
+        for button in lvl.buttons:
             if pygame.sprite.collide_rect(arrow, button) or pygame.sprite.collide_rect(player, button):
                 button.press()
             button.draw(screen)
-        lvs[level].goal.draw(screen)
+        lvl.goal.draw(screen)
 
-        for door in lvs[level].doors:
+        for door in lvl.doors:
             if door.closed:
                 player.terrain_collision(door)
                 arrow.terrain_collision(door)
                 door.draw(screen)
         
-        lvs[level].draw_text(screen)
+        lvl.draw_text(screen)
 
         
-        if pygame.sprite.collide_mask(player, lvs[level].goal):
+        if pygame.sprite.collide_mask(player, lvl.goal):
             Sfx.VICTORY.play()
-            level += 1
-            if level == len(lvs):
+            level_num += 1
+            if level_num == len(lvs):
                 game_state = 2
             else:
-                player = Player(lvs[level].spawn)
+                player = Player(lvl.spawn)
                 arrow = Arrow(player)
+            lvl = lvs[level_num]()
         
         player.handle_movement()
         arrow.handle_movement()
@@ -103,17 +104,28 @@ while running:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT and not arrow.attached:
                     arrow.swap()
+                if event.key == pygame.K_r:
+                    lvl = lvs[level_num]()
+                    player = Player(lvl.spawn)
+                    arrow = Arrow(player)
+        
+        if player.y > HEIGHT or arrow.y > HEIGHT: 
+            lvl = lvs[level_num]()
+            player = Player(lvl.spawn)
+            arrow = Arrow(player)
         
         player.draw(screen) 
         arrow.draw(screen)
+
     elif game_state == 2:
         pass
     elif game_state == 3:
         screen.blit(Images.INTRO_TRANSITION, (0, 0))
         if keys[pygame.K_SPACE]:
             game_state = 1
-            level = 1
-            player = Player(lvs[level].spawn)
+            level_num = 1
+            lvl = lvs[level_num]()
+            player = Player(lvl.spawn)
             arrow = Arrow(player)
     pygame.display.flip()
 
