@@ -36,18 +36,23 @@ class Lv2:
     spawn = (20, 500)
     goal = Goal(1120, 700)
     doors = [Door(400, 580, 20, 120)]
-    buttons = [Button(20, 120, True, doors[0])]
+    buttons = [Button(20, 120, True, False, doors[0])]
 
 class Lv3:
-    terrain = [Ground(0, 700, 1280, 20, "floor"),
-               Ground(0, 0, 20, 720, "left wall"),
+    terrain = [Ground(0, 0, 20, 720, "left wall"),
                Ground(1260, 0, 20, 720, "right wall"),
                Ground(0, 0, 1280, 20, "ceiling"),
-               Ground(400, 600, 200, 20, "platform"),
-               Ground(300, 400, 200, 20, "platform")]
+               Ground(0, 600, 200, 120),
+               Ground(300, 500, 200, 20),
+               Ground(600, 500, 250, 20),
+               Ground(1000, 500, 280, 320),
+               Ground(1100, 200, 180, 20),
+               Ground(700, 300, 250, 20),
+               Ground(400, 300, 150, 20),
+               Ground(0, 200, 300, 20)]
     spawn = (20, 500)
-    goal = Goal(1120, 200)
-    doors = []
-    buttons = []
+    goal = Goal(100, 200)
+    doors = [Door(300, 380, 20, 120), Door(180, 0, 20, 200)]
+    buttons = [Button(1100, 450, False, True, doors[0]), Button(1210, 30, True, True, doors[1])]
 
 lvs = [Test, Lv1, Lv2, Lv3]

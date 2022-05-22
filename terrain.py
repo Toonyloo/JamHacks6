@@ -41,13 +41,14 @@ class Door:
             screen.blit(self.image, (self.x, self.y))
 
 class Button(pygame.sprite.Sprite):
-    def __init__(self, x, y, vert, door):
+    def __init__(self, x, y, vert, flipped, door):
         super(Button, self).__init__()
         self.x = x
         self.y = y
         self.pressed = False
-        self.vertical = vert
+        self.vertical = vert  # Vertical means left or right wall
         self.door = door
+        self.flipped = flipped  # Flipped means on a right wall or bottom
         if self.vertical:
             self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_W, Consts.BUTTON_L)
         else:
@@ -58,13 +59,25 @@ class Button(pygame.sprite.Sprite):
             self.door.closed = False
             Sfx.BUTTON.play()
             if self.vertical:
-                self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_W - 30, Consts.BUTTON_L)
+                if not self.flipped:
+                    self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_W - 30, Consts.BUTTON_L)
+                else:
+                    self.rect = pygame.Rect(self.x + 30, self.y, Consts.BUTTON_W - 30, Consts.BUTTON_L)
             else:
-                self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_L, Consts.BUTTON_W - 30)
+                if not self.flipped:
+                    self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_L, Consts.BUTTON_W - 30)
+                else:
+                    self.rect = pygame.Rect(self.x, self.y + 30, Consts.BUTTON_L, Consts.BUTTON_W - 30)
     
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
         if self.vertical:
-            pygame.draw.rect(screen, (0), pygame.Rect(self.x, self.y - 10, Consts.BUTTON_W - 35, Consts.BUTTON_L + 20))
+            if not self.flipped:
+                pygame.draw.rect(screen, (0), pygame.Rect(self.x, self.y - 10, Consts.BUTTON_W - 35, Consts.BUTTON_L + 20))
+            else:
+                pygame.draw.rect(screen, (0), pygame.Rect(self.x + 35, self.y - 10, Consts.BUTTON_W - 35, Consts.BUTTON_L + 20))
         else:
-            pygame.draw.rect(screen, (0), pygame.Rect(self.x - 10, self.y, Consts.BUTTON_L + 20, Consts.BUTTON_W - 35))
+            if not self.flipped:
+                pygame.draw.rect(screen, (0), pygame.Rect(self.x - 10, self.y, Consts.BUTTON_L + 20, Consts.BUTTON_W - 35))
+            else:
+                pygame.draw.rect(screen, (0), pygame.Rect(self.x - 10, self.y + 35, Consts.BUTTON_L + 20, Consts.BUTTON_W - 35))
