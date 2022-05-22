@@ -34,10 +34,11 @@ class Door:
         self.height = height
         self.closed = True
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.image = pygame.transform.scale(Images.DOOR, (self.width, self.height))
     
     def draw(self, screen):
         if self.closed:
-            pygame.draw.rect(screen, (120, 0, 255), self.rect)
+            screen.blit(self.image, (self.x, self.y))
 
 class Button(pygame.sprite.Sprite):
     def __init__(self, x, y, vert, door):
