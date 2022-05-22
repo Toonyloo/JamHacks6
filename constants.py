@@ -47,3 +47,5 @@ class Images:
     GAME_BACKGROUND = pygame.transform.scale(GAME_BACKGROUND, (Consts.WIDTH, Consts.HEIGHT))
     ARROW = pygame.image.load('assets/images/arrow.png').convert_alpha()
     ARROW = pygame.transform.scale(ARROW, (Consts.ARROW_SPRITE_W, Consts.ARROW_SPRITE_H))
+    FLOOR = pygame.image.load('assets/images/floorTexture.png').convert_alpha()
+    FLOOR = pygame.transform.scale(FLOOR, (Consts.WIDTH, Consts.HEIGHT))

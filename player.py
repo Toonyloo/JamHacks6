@@ -24,10 +24,16 @@ class Player(pygame.sprite.Sprite):
         else:
             self.left_count = 0
         
-        if self.right_count and self.grounded > 1:
-            self.image = Images.PLAYER_RIGHT[self.right_count // 5 % 4]
-        if self.left_count and self.grounded > 1:
-            self.image = Images.PLAYER_LEFT[self.left_count // 5 % 4]
+        if self.right_count:
+            if self.grounded > 1:
+                self.image = Images.PLAYER_RIGHT[self.right_count // 5 % 4]
+            else:
+                self.image = Images.PLAYER_RIGHT[0]
+        if self.left_count:
+            if self.grounded > 1:
+                self.image = Images.PLAYER_LEFT[self.left_count // 5 % 4]
+            else:
+                self.image = Images.PLAYER_LEFT[0]
         
         self.rect = pygame.Rect(self.x, self.y, Consts.PLAYER_W, Consts.PLAYER_H)
         screen.blit(self.image, (self.x, self.y))
