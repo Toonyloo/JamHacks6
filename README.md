@@ -13,6 +13,3 @@ Left Click: Shoot The Accursed Arrow
 Left Shift: Swap Locations with The Accursed Arrow
 
 R: Restart Level
-
-### Download
-To download this game, download and extract the .zip file in the releases section, then run the game inside its folder.
