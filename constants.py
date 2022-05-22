@@ -21,6 +21,7 @@ class Consts:
     BUTTON_L = 150
     BUTTON_W = 50
     BUTTON_W_PRESSED = 20
+    ICON_SIZE = 60
 pygame.display.set_mode((Consts.WIDTH, Consts.HEIGHT))
 
 class Images:
@@ -53,6 +54,8 @@ class Images:
     INTRO_TRANSITION = pygame.transform.scale(INTRO_TRANSITION, (Consts.WIDTH, Consts.HEIGHT))
     END_SCREEN = pygame.image.load('assets/images/endScreen.png').convert_alpha()
     END_SCREEN = pygame.transform.scale(END_SCREEN, (Consts.WIDTH, Consts.HEIGHT))
+    GAME_ICON = pygame.image.load('assets/images/gameIcon.png').convert_alpha()
+    GAME_ICON = pygame.transform.scale(GAME_ICON, (Consts.ICON_SIZE, Consts.ICON_SIZE))
     DOOR = pygame.image.load('assets/images/door.png').convert_alpha()
 
 class Sfx:

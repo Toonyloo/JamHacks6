@@ -1,4 +1,3 @@
-import pygame
 from terrain import Ground, Goal, Button, Door
 from constants import Fonts, Consts
 

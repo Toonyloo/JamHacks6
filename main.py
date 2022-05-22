@@ -1,8 +1,7 @@
 import pygame
 from player import Player
-from terrain import Ground
 from arrow import Arrow
-from constants import Consts, Images, Sfx, Fonts
+from constants import Consts, Images, Sfx
 from levels import lvs
 
 running = True
@@ -21,6 +20,7 @@ pygame.init()
 pygame.mixer.init() 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('The Accursed Arrow') 
+pygame.display.set_icon(Images.GAME_ICON)
 clock = pygame.time.Clock()  
 
 running = True
@@ -115,6 +115,8 @@ while running:
         
         player.draw(screen) 
         arrow.draw(screen)
+        if arrow.attached:
+            screen.blit(Images.GAME_ICON, (10, HEIGHT - Consts.ICON_SIZE - 10))
 
     elif game_state == 2:
         screen.blit(Images.END_SCREEN, (0, 0))
