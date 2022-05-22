@@ -43,10 +43,11 @@ class Lv3:
 Ground(0, 0, 20, 720, "left wall"),
 Ground(1260, 0, 20, 720, "right wall"),
 Ground(0, 0, 1280, 20, "ceiling"),
-Ground(600, 0, 20, 600)]
+Ground(400, 0, 20, 600),
+Ground(800, 300, 20, 420)]
     spawn = (20, 500)
     goal = Goal(1120, 700)
-    doors = [Door(600, 600, 20, 120)]
+    doors = [Door(400, 600, 20, 120)]
     buttons = [Button(20, 120, True, doors[0])]
 
 lvs = [Test, Lv1, Lv2, Lv3]
