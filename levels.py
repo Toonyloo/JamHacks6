@@ -75,4 +75,7 @@ class Lv3:
     doors = [Door(300, 380, 20, 120), Door(180, 0, 20, 200)]
     buttons = [Button(1100, 450, False, True, doors[0]), Button(1210, 30, True, True, doors[1])]
 
+    def draw_text(screen):
+        pass
+
 lvs = [Test, Lv1, Lv2, Lv3]
