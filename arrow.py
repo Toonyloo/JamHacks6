@@ -1,6 +1,6 @@
 import pygame
 import math
-from constants import Consts, Images
+from constants import Consts, Images, Sfx
 
 class Arrow:
     def __init__(self, p): # initiates with a Player class
@@ -17,6 +17,7 @@ class Arrow:
         self.angle = 0
         self.image = Images.ARROW
         self.rect = pygame.Rect(self.x, self.y, Consts.ARROW_W, Consts.ARROW_H)
+        self.first_collide = True
 
     def handle_movement(self):
         if self.attached:
@@ -38,6 +39,7 @@ class Arrow:
             self.attached = True
     
     def shoot(self, mouse_pos): # Takes in an angle from 0-360
+        Sfx.FIRING.play()
         diff_x = mouse_pos[0] - (self.player.x + Consts.PLAYER_W / 2)
         diff_y = (self.player.y + Consts.PLAYER_H / 2) -  mouse_pos[1]
         power = math.sqrt(diff_x ** 2 + diff_y ** 2)
@@ -49,6 +51,7 @@ class Arrow:
         self.y_vel = math.sin(angle) * self.total_vel * -1
         self.x_vel = math.cos(angle) * self.total_vel
         self.attached = False
+        self.first_collide = True
     
     def draw(self, screen):
         if self.x_vel != 0:
@@ -130,6 +133,9 @@ class Arrow:
         if self.terrain_collision_top(terrain):
             self.y_vel = 0
             self.x_vel = 0
+            if self.first_collide:
+                Sfx.STUCK.play()
+                self.first_collide = False
 
         if self.terrain_collision_bottom(terrain):
             self.y_vel = 0
@@ -139,4 +145,4 @@ class Arrow:
         self.y , self.player.y = self.player.y, self.y - (Consts.PLAYER_H - Consts.ARROW_H)
         self.xprev = self.x
         self.yprev = self.y
-        
+        Sfx.TELEPORT.play()

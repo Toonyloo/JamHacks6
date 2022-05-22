@@ -1,5 +1,5 @@
 import pygame
-from constants import Consts, Images
+from constants import Consts, Images, Sfx
 
 class Ground:
     def __init__(self, x, y, width, height, tag = None):
@@ -55,6 +55,7 @@ class Button(pygame.sprite.Sprite):
     def press(self):
         if not self.pressed:
             self.door.closed = False
+            Sfx.BUTTON.play()
             if self.vertical:
                 self.rect = pygame.Rect(self.x, self.y, Consts.BUTTON_W - 30, Consts.BUTTON_L)
             else:

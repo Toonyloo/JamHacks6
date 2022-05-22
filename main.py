@@ -2,7 +2,7 @@ import pygame
 from player import Player
 from terrain import Ground
 from arrow import Arrow
-from constants import Consts, Images
+from constants import Consts, Images, Sfx
 from levels import lvs
 
 running = True
@@ -73,14 +73,6 @@ while running:
             arrow.terrain_collision(ground)
             ground.draw(screen)
         
-        if pygame.sprite.collide_mask(player, lvs[level].goal):
-            level += 1
-            if level == len(lvs):
-                game_state = 0
-            else:
-                player = Player(lvs[level].spawn)
-                arrow = Arrow(player)
-                continue
         for button in lvs[level].buttons:
             if pygame.sprite.collide_rect(arrow, button) or pygame.sprite.collide_rect(player, button):
                 button.press()
@@ -93,6 +85,14 @@ while running:
                 arrow.terrain_collision(door)
                 door.draw(screen)
         
+        if pygame.sprite.collide_mask(player, lvs[level].goal):
+            Sfx.VICTORY.play()
+            level += 1
+            if level == len(lvs):
+                game_state = 2
+            else:
+                player = Player(lvs[level].spawn)
+                arrow = Arrow(player)
         
         player.handle_movement()
         arrow.handle_movement()

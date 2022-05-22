@@ -49,3 +49,10 @@ class Images:
     ARROW = pygame.transform.scale(ARROW, (Consts.ARROW_SPRITE_W, Consts.ARROW_SPRITE_H))
     FLOOR = pygame.image.load('assets/images/floorTexture.png').convert_alpha()
     FLOOR = pygame.transform.scale(FLOOR, (Consts.WIDTH, Consts.HEIGHT))
+
+class Sfx:
+    FIRING = pygame.mixer.Sound("assets/sounds/firing.mp3")
+    STUCK = pygame.mixer.Sound("assets/sounds/stuck.mp3")
+    BUTTON = pygame.mixer.Sound("assets/sounds/button.mp3")
+    VICTORY = pygame.mixer.Sound("assets/sounds/victory.mp3")
+    TELEPORT = pygame.mixer.Sound("assets/sounds/teleport.mp3")
