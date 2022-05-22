@@ -133,7 +133,7 @@ class Arrow:
         if self.terrain_collision_top(terrain):
             self.y_vel = 0
             self.x_vel = 0
-            if self.first_collide:
+            if self.first_collide and not self.attached:
                 Sfx.STUCK.play()
                 self.first_collide = False
 
