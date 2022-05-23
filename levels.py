@@ -87,4 +87,21 @@ class Lv3:
     def draw_text(self, screen):
         pass
 
-lvs = [Test, Lv1, Lv2, Lv3]
+class Lv4:
+    def __init__(self):
+        self.terrain = [Ground(0, 0, 20, 720, "left wall"),
+               Ground(1260, 0, 20, 720, "right wall"),
+               Ground(0, 0, 1280, 20, "ceiling"),
+               Ground(0, 600, 200, 120),
+               Ground(600, 600, 680, 120),
+               Ground(500, 290, 780, 20)]
+        self.spawn = (20, 500)
+        self.goal = Goal(1100, 290)
+        self.doors = [Door(900, 20, 20, 270)]
+        self.buttons = [Button(1000, 550, False, True, self.doors[0])]
+
+    
+    def draw_text(self, screen):
+        pass
+
+lvs = [Test, Lv1, Lv2, Lv3, Lv4]
