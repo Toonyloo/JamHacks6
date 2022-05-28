@@ -59,11 +59,11 @@ class Images:
     DOOR = pygame.image.load('assets/images/door.png').convert_alpha()
 
 class Sfx:
-    FIRING = pygame.mixer.Sound("assets/sounds/firing.mp3")
-    STUCK = pygame.mixer.Sound("assets/sounds/stuck.mp3")
-    BUTTON = pygame.mixer.Sound("assets/sounds/button.mp3")
-    VICTORY = pygame.mixer.Sound("assets/sounds/victory.mp3")
-    TELEPORT = pygame.mixer.Sound("assets/sounds/teleport.mp3")
+    FIRING = pygame.mixer.Sound("assets/sounds/firing.wav")
+    STUCK = pygame.mixer.Sound("assets/sounds/stuck.wav")
+    BUTTON = pygame.mixer.Sound("assets/sounds/button.wav")
+    VICTORY = pygame.mixer.Sound("assets/sounds/victory.wav")
+    TELEPORT = pygame.mixer.Sound("assets/sounds/teleport.wav")
 
 class Fonts:
     TXT_FONT = pygame.font.Font("assets/fonts/macondo.ttf", 32)
